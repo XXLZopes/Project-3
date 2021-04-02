@@ -2,18 +2,23 @@ import React from 'react';
 
 function Landing() {
     return (
-    <section>
+        <section>
             <header>
-                <img class="img" src="./assets/welcome.gif" width="70%" alt=''/>
+                <img class="img" src="./assets/welcome.gif" width="70%" alt='' />
             </header>
+            <br/>
             <div>
-                    <img class="img" src="./assets/login.png" width="20%" alt=''/>
-
+                <button class="button img">
+                    <img src="./assets/login.png" width="20%" alt='' />
+                </button>
             </div>
-                <div>
-                    <img class="img" src="./assets/signup.png" width="20%" alt=''/>
-    </div>
-    </section>
+            <br/>
+            <div>
+                <button class="button img">
+                    <img class="img" src="./assets/signup.png" width="20%" alt='' />
+                </button>
+            </div>
+        </section>
     );
 }
 
