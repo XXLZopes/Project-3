@@ -4,10 +4,13 @@ import Landing from './components/Landing'
 
 function App() {
   return(
-  <Router basename = '/'>
-    <Route exact path={["/","home"]} component={Landing}/>
+    <div class="main">
+      <Landing/>
+    </div>
+  // <Router basename = '/'>
+  //   <Route exact path={["/","home"]} component={Landing}/>
 
-  </Router>
+  // </Router>
   )
 }
 
