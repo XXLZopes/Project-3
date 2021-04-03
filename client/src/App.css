@@ -38,5 +38,9 @@
 }
 
 body {
-  background: black;
+  background: purple;
+}
+
+canvas {
+  background-color: black;
 }
