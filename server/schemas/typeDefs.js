@@ -1,13 +1,13 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type User {
-        _id: ID
-        username: String
-        email: String
-        password: String
-        stats: [PlayerStats]
-    }
+  type User {
+      _id: ID
+      username: String
+      email: String
+      password: String
+      stats: [PlayerStats]
+  }
 
   type PlayerStats {
     statsId: ID
@@ -15,7 +15,18 @@ const typeDefs = gql`
     misses: Int
     points: String
     shotType: String
-    location: Int
+    location: 
+    {x: Int
+    y: Int}
+  }
+
+  type Preferences {
+    preferencesId: ID
+    dominantHand: String
+    position: String
+    team: String
+    favTeam: String
+    courtColors: String
   }
 
   type Auth {
@@ -34,7 +45,8 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    stats: [PlayerStats] 
+    stats: [PlayerStats]
+    preferences: [Preferences] 
   }
 
   type Mutation {
