@@ -8,18 +8,28 @@ function Landing() {
             </header>
             <br/>
             <div>
-                <button class="button img">
-                    <img src="./assets/login.png" width="20%" alt='' />
+                <button onClick={Login} class="button img">
+                    <img src="./assets/login.png" width="40%" alt='' />
                 </button>
             </div>
             <br/>
             <div>
-                <button class="button img">
-                    <img class="img" src="./assets/signup.png" width="20%" alt='' />
+                <button onClick={SignUp}class="button img">
+                    <img class="img" src="./assets/signup.png" width="40%" alt='' />
                 </button>
+            </div>
+            <div id="loginModal" class="modal">
+                <h1>login in below</h1>
             </div>
         </section>
     );
 }
 
+function Login() {
+    console.log('login')
+}
+
+function SignUp() {
+    console.log('sign up')
+}
 export default Landing;
