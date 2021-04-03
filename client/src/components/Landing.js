@@ -1,24 +1,25 @@
 import React from 'react';
+import LoginModal from './LoginModal';
 
 function Landing() {
     return (
         <section>
             <header>
-                <img class="img" src="./assets/welcome.gif" width="70%" alt='' />
+                <img className="img" src="./assets/welcome.gif" width="70%" alt='' />
             </header>
-            <br/>
+            <br />
             <div>
-                <button onClick={Login} class="button img">
+                <button onClick={Login} className="button img">
                     <img src="./assets/login.png" width="40%" alt='' />
                 </button>
             </div>
-            <br/>
+            <br />
             <div>
-                <button onClick={SignUp}class="button img">
-                    <img class="img" src="./assets/signup.png" width="40%" alt='' />
+                <button onClick={SignUp} className="button img">
+                    <img className="img" src="./assets/signup.png" width="40%" alt='' />
                 </button>
             </div>
-            <div id="loginModal" class="modal">
+            <div id="loginModal" className="modal">
                 <h1>login in below</h1>
             </div>
         </section>
@@ -27,6 +28,7 @@ function Landing() {
 
 function Login() {
     console.log('login')
+    return LoginModal;
 }
 
 function SignUp() {
