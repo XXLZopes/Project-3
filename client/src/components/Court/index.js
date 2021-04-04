@@ -1,7 +1,8 @@
 import React, {useRef, useEffect, useState} from 'react';
 let pinnedLocationCount = 0;
 function Court() {
-    
+
+    let canvasWidth = window.innerWidth <= 475 ? window.innerWidth : 475;
     const canvasRef = useRef(null);
 
     //get mouse position custom hook
@@ -32,7 +33,7 @@ function Court() {
 
         ctx.fillStyle = 'red'
         ctx.beginPath()
-        xPos && yPos ? ctx.arc(xPos, yPos, 15, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
+        xPos && yPos ? ctx.arc(xPos, yPos, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
         ctx.fill()
 
         console.log('x: ',xPos,'y: ',yPos);
@@ -44,12 +45,16 @@ function Court() {
         const ctx = canvas.getContext('2d')
         let width = canvas.width;
         let height = window.innerHeight;
-        let courtLinesWidth = width*height*.000022;
+        let courtLinesWidth = width*height*.000012;
         let center = width/2;
         let half = height/2;
         ctx.fillStyle = 'white'
         ctx.strokeStyle = 'white'
         ctx.lineWidth = (courtLinesWidth)
+
+        function drawOutOfBounds() {
+
+        }
 
         //Draw Half Court
         function drawHalf() {
@@ -64,7 +69,7 @@ function Court() {
             ctx.lineTo(width, halfCourtY);
             ctx.stroke();
             //circle small
-            ctx.arc(halfCourtX, halfCourtY, width*.05, 0, 2*Math.PI);
+            ctx.arc(halfCourtX, halfCourtY, smallCircleWidth, 0, 2*Math.PI);
             //circle big
             ctx.arc(halfCourtX, halfCourtY, bigCircleWidth, 0, 2*Math.PI);
             ctx.stroke();
@@ -169,12 +174,11 @@ function Court() {
     return(
         <canvas 
         ref={canvasRef} 
-        width={window.innerWidth} 
+        width={canvasWidth} 
         height={window.innerHeight}
         onClick={() => {
             //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++
-           console.log('x: ', xPos, 'y: ', yPos)
         }
     }
         ></canvas>
