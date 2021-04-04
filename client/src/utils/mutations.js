@@ -35,6 +35,7 @@ export const SAVE_STATS = gql`
       shotType: String
       x: Int
       y: Int
+      courtLocation: Int
     }
   }
 `;
@@ -49,6 +50,7 @@ export const REMOVE_RECORD = gql`
       shotType: String
       x: Int
       y: Int
+      courtLocation: Int
     }
   }
 `;

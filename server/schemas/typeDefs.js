@@ -17,6 +17,7 @@ const typeDefs = gql`
     shotType: String
     x: Int
     y: Int
+    courtLocation: Int
   }
 
   type Preferences {
@@ -41,6 +42,7 @@ const typeDefs = gql`
     shotType: String
     x: Int
     y: Int
+    courtLocation: Int
   }
 
   type Query {
@@ -52,8 +54,8 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addStats(makes: Int!, misses: Int!, points: Int!, shotType: String!, x: Int!, y: Int!): User
-    removeRecord(statId: ID!): User
+    addStats(makes: Int!, misses: Int!, points: Int!, shotType: String!, x: Int!, y: Int!, courtLocation: Int!): User
+    removeRecord(statsId: ID!): User
   }
 `;
 
