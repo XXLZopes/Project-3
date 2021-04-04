@@ -30,6 +30,6 @@ const statsSchema = new Schema({
       type: Number,
       required: true,
     },
-  });
+});
 
 module.exports = statsSchema;

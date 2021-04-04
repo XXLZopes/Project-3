@@ -39,7 +39,8 @@ const typeDefs = gql`
     misses: Int
     points: String
     shotType: String
-    location: Int
+    x: Int
+    y: Int
   }
 
   type Query {

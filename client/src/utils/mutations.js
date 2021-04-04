@@ -26,27 +26,29 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_STATS = gql`
-  mutation saveBook($BookInput: String!) {
-    saveBook(BookInput: $BookInput) {
-      bookId
-      authors
-      description
-      title
-      image
-      link
+  mutation addStats($StatInput: String!) {
+    addStats(statInput: $StatInput) {
+      statsId: ID
+      makes: Int
+      misses: Int
+      points: String
+      shotType: String
+      x: Int
+      y: Int
     }
   }
 `;
 
 export const REMOVE_RECORD = gql`
-  mutation removeBook($bookId: ID!) {
-    removeBook(bookId: $bookId) {
-      bookId
-      authors
-      description
-      title
-      image
-      link
+  mutation removeRecord($statsId: ID!) {
+    removeRecord(statsId: $statsId) {
+      statsId: ID
+      makes: Int
+      misses: Int
+      points: String
+      shotType: String
+      x: Int
+      y: Int
     }
   }
 `;
