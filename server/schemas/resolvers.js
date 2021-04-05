@@ -42,7 +42,7 @@ const resolvers = {
       addStats: async (parent, args, context) => {
         if (context.user) {
           const updatedUser = await User.create({ ...args, username: context.user.username });
-  
+          
           await User.findByIdAndUpdate(
             { _id: context.user._id },
             { $push: { savedStats: PlayerStats._id } },
