@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 
-const LoginModal = ({ handleClose, show, children }) => {
-}
+// const LoginModal = ({ handleClose, show, children }) => {
+// }
   
-export default LoginModal;
+// export default LoginModal;
