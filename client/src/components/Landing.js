@@ -1,6 +1,9 @@
 import React from 'react';
 import LoginModal from './LoginModal';
-import Modal from '../components/Nav/landingNav'
+import Modal from '../components/Nav/landingNav';
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from './../utils/mutations';
+import Auth from '../utils/Auth';
 
 function Landing() {
     return (
@@ -11,7 +14,7 @@ function Landing() {
             </header>
             <br />
             <div>
-                <button onClick={Login} className="button img">
+                <button onClick={console.log(Login())} className="button img">
                     <img src="./assets/login.png" width="40%" alt='' />
                 </button>
             </div>
@@ -33,6 +36,25 @@ function Landing() {
 
 function Login() {
     console.log('login')
+    const loginUser = useMutation(LOGIN_USER)
+    const robertInfo = {
+        email: "robert@test.com",
+        password: "password"
+    };
+    try {
+        const Robert = await loginUser({variables: {robertInfo} });
+        console.log(robertInfo);
+        if (!Response.ok) {
+            throw new Error('something went wrong!');
+        }
+
+        const { token, user } = await Response.json();
+        console.log(user);
+        Auth.login(token);
+    } catch (err) {
+        console.log(err);
+        setShowAlert(alert)
+    }
     return LoginModal;
 }
 

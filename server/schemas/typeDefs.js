@@ -25,7 +25,7 @@ const typeDefs = gql`
     _id: ID
     makes: Int
     misses: Int
-    points: String
+    points: Int
     shotType: String
     x: Int
     y: Int

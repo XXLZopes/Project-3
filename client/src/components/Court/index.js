@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState} from 'react';
 import { useMutation } from '@apollo/react-hooks'
-import {SAVE_STATS} from '../../utils/mutations';
+import {ADD_STATS} from '../../utils/mutations';
 let pinnedLocationCount = 0;
 let courtLineColor = 'teal';
 let paintColor = 'lime';
@@ -15,7 +15,7 @@ function Court() {
 
     // const [addStat, setAddStat] = useState([]);
     // const [StatInput, setStatInput] = useState('');
-    const [addStats] = useMutation(SAVE_STATS);
+    const [addStats] = useMutation(ADD_STATS);
     let canvasWidth = window.innerWidth <= 500 ? window.innerWidth : 500;
     const canvasRef = useRef(null);
     //get mouse position custom hook
@@ -37,7 +37,7 @@ function Court() {
 
     let { xPos, yPos } = useMousePosition();
 
-    const statsToSave = {
+    const savedStats = {
         makes: 10,
         misses: 10,
         points: '10',
@@ -47,11 +47,11 @@ function Court() {
         courtLocation: canvasWidth
     };
     
-    const handleStatsInput = async (statsToSave) => {
-        let stats = {...statsToSave}
-        console.log(stats)
+    const handleStatsInput = async (savedStats) => {
+        let StatInput = {...savedStats}
+        console.log(StatInput)
         try {
-            const response = await addStats(stats);
+            const response = await addStats(StatInput);
             if (!response.ok) {
                 throw new Error('Something went wrong!')
             } 
@@ -73,7 +73,7 @@ function Court() {
         ctx.fill(); 
         console.log('x: ',xPos,'y: ',yPos);
 
-        handleStatsInput(statsToSave);
+        handleStatsInput(savedStats);
 
     }, [pinnedLocationCount]);
 

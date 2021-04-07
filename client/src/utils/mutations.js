@@ -25,7 +25,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_STATS = gql`
+export const ADD_STATS = gql`
   mutation addStats($StatInput: String!) {
     addStats(StatInput: $StatInput) {
       _id: ID
