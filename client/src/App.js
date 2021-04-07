@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="background">
       <Nav />
-      {/* <Court></Court> */}
+      <Court></Court>
       {/* <Landing></Landing> */}
 
     </div>
