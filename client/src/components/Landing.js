@@ -1,9 +1,11 @@
 import React from 'react';
 import LoginModal from './LoginModal';
+import Modal from '../components/Nav/landingNav'
 
 function Landing() {
     return (
         <section>
+            <Modal/>
             <header>
                 <img className="img" src="./assets/welcome.gif" width="70%" alt='' />
             </header>

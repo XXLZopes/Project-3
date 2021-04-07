@@ -31,7 +31,6 @@ class Modal extends Component {
     return (
       <div> 
       <div className="bball">
-      <img className="img" src="./assets/MYLITICS.gif" width="70%" alt='' />
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}

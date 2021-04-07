@@ -1,8 +1,11 @@
 import React from 'react'; 
+import Modal from './Nav/index';
+
 
 function Dashboard() {
     return (
         <section>
+            <Modal/>
             <header className="header">   
                 <br/>
                 <h1>USERNAME</h1>
