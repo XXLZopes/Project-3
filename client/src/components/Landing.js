@@ -36,24 +36,29 @@ function Landing() {
 
 function Login() {
     console.log('login')
-    const loginUser = useMutation(LOGIN_USER)
+    const [loginUser] = useMutation(LOGIN_USER)
     const robertInfo = {
         email: "robert@test.com",
         password: "password"
     };
     try {
-        const Robert = await loginUser({variables: {robertInfo} });
-        console.log(robertInfo);
-        if (!Response.ok) {
-            throw new Error('something went wrong!');
-        }
+        const response = loginUser({variables: {robertInfo} });
+        setTimeout (function() {
+            if (!response.ok) {
+                throw new Error('something went wrong!');
+            }
+        }, 3000);
 
-        const { token, user } = await Response.json();
+        console.log(response);
+        console.log(robertInfo);
+
+
+        const { token, user } = response.json();
         console.log(user);
         Auth.login(token);
     } catch (err) {
         console.log(err);
-        setShowAlert(alert)
+        // setShowAlert(alert)
     }
     return LoginModal;
 }
