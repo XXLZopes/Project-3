@@ -25,7 +25,7 @@ const userSchema = new Schema(
     createdAt: Number,
     updatedAt: Number,
     // set savedStats to be an array of data that adheres to the statsSchema
-    playerStats: [statsSchema],
+    savedStats: [statsSchema],
     // savedPreferences: [preferencesSchema]
   },
   // set this to use virtual below
