@@ -27,8 +27,8 @@ export const ADD_USER = gql`
 
 export const SAVE_STATS = gql`
   mutation addStats($StatInput: String!) {
-    addStats(statInput: $StatInput) {
-      statsId: ID
+    addStats(StatInput: $StatInput) {
+      _id: ID
       makes: Int
       misses: Int
       points: String
@@ -41,9 +41,9 @@ export const SAVE_STATS = gql`
 `;
 
 export const REMOVE_RECORD = gql`
-  mutation removeRecord($statsId: ID!) {
-    removeRecord(statsId: $statsId) {
-      statsId: ID
+  mutation removeRecord($_Id: ID!) {
+    removeRecord(_Id: $_Id) {
+      _id: ID
       makes: Int
       misses: Int
       points: String
