@@ -62,3 +62,7 @@ code {
   margin-right: auto;
   overflow: none;
 }
+
+canvas {
+  background-color: black;
+}

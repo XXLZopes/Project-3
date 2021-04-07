@@ -29,13 +29,13 @@ class Modal extends Component {
 
   render() {
     return (
-      <div> 
+      <div className='navDiv'> 
       <div className="bball">
-      <img className="img" src="./assets/MYLITICS.gif" width="70%" alt='' />
+      <img className="img" src="./assets/MYLITICS.gif" width="250" alt='' />
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}
-          <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/>
+          <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width='80px'/>
         </a>
         </div>
       

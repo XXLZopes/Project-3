@@ -1,21 +1,27 @@
 import React, {useRef, useEffect, useState} from 'react';
-import {SAVE_STATES} from '../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import {SAVE_STATS} from '../../utils/mutations';
 
 let pinnedLocationCount = 0;
 let courtLineColor = 'teal';
 let paintColor = 'lime';
 let playerInnerColor = 'white';
+let canvasWidth = window.innerWidth < 500 ? window.innerWidth : 500;
+console.log(window.innerWidth)
 
+
+// window.innerWidth <= 500 ? canvasWidth =  window.innerWidth : canvasWidth = 500;
 // let courtLineColor = 'red';
 // let paintColor = 'white';
 // let playerInnerColor = 'yellow';
 
 
 function Court() {
-    let canvasWidth = window.innerWidth <= 500 ? window.innerWidth : 500;
+    const [StatInput, { error }] = useMutation(SAVE_STATS);
+    
     const canvasRef = useRef(null);
 
-    //get mouse position custom hook
+    //Get mouse position custom hook
     const useMousePosition = () => {
         //useState hook to set the mousePosition
         const [mousePosition, setMousePosition] = useState({ xPos: null, yPos: null});
@@ -34,7 +40,7 @@ function Court() {
 
     let { xPos, yPos } = useMousePosition();
 
-    //Prop drill width and height so that it can be updated on screen resize
+    //Draw players
     useEffect(() => {
         //STILL NEED TO DO: Push pin data to array and array to database with fetch request
         //Initiate Canvas
@@ -44,12 +50,16 @@ function Court() {
         ctx.fillStyle = playerInnerColor;
 
         ctx.beginPath()
-        xPos && yPos ? ctx.arc(xPos, yPos, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
+        xPos && yPos ? ctx.arc(xPos, yPos-80, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos-80, 0, 0, 2*Math.PI)
         ctx.fill();
 
-        console.log('x: ',xPos,'y: ',yPos);
+        console.log('x: ',xPos,'y: ',yPos-80);
+
+        
     }, [pinnedLocationCount]);
 
+
+    
     //Court Lines Start
     useEffect(() => {
         const canvas = canvasRef.current
@@ -65,8 +75,8 @@ function Court() {
 
             //Draw Half Court
         function drawHalf() {
-            let halfCourtX = width/2
-            let halfCourtY = height/2
+            let halfCourtX =width/2
+            let halfCourtY = height/2+20
             let bigCircleWidth = width*.15
             let smallCircleWidth = width *.05
             ctx.fillStyle = courtLineColor;
@@ -102,18 +112,15 @@ function Court() {
                     for(let x=0; x<=width/2; x+=.5) {
                       //Draw half circle
                     ctx.beginPath()
-                    console.log(distanceBetweenLines)
                     let y= .9*Math.sqrt((r*r)-x*x)+distanceFromHalf
-                    ctx.arc(x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
-                    ctx.arc(-x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
+                    ctx.arc(x+center, y-60+20, courtLinesWidth/2.2, 0, 2*Math.PI);
+                    ctx.arc(-x+center, y-60+20, courtLinesWidth/2.2, 0, 2*Math.PI);
                     ctx.fill();
                 
                     }
              
                     let rx = center+r
-                    y= .02655*Math.sqrt(r*r)
-                    console.log('x: ',rx)
-                    console.log('y: ', y+distanceFromHalf)
+                    y= .02655*Math.sqrt(r*r)+20
 
                     ctx.beginPath()
                     ctx.moveTo(rx, 0);
@@ -155,12 +162,7 @@ function Court() {
                     let x = center+r
                     let xOne = x
                     y= .02655*Math.sqrt(r*r)*2
-                    console.log('x: ',x)
-                    console.log('y: ', y)
 
-                 
-
-                   
                     //left
                     x = center-r
                     let distance = xOne - x+20;
@@ -261,8 +263,9 @@ function Court() {
         <canvas 
         ref={canvasRef} 
         width={canvasWidth} 
-        height={window.innerHeight-canvasWidth/5}
+        height={window.innerHeight-80}
         onClick={() => {
+            // StatInput({ variables: { x: xPos, y: yPos, makes: 10, misses: 0, points: 10, shotType: 'layup', courtLocation: 10} });
             //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++
         }

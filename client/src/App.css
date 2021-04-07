@@ -3,11 +3,6 @@ body {
   overflow-y: hidden;
 }
 
-canvas {
-  background-color: black;
-  width: 100%;
-}
-
 .modal-content{
   background-color: #000000;
   color: rgb(114, 46, 128);
@@ -25,6 +20,10 @@ canvas {
 .bball{
   display: flex;
   justify-content: center;
+}
+
+.navDiv {
+  height: 80px;
 }
 
 /* Navbar CSS */
