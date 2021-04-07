@@ -8,6 +8,13 @@ import{
   HashRouter as Router,
   Route
 } from "react-router-dom";
+import { ApolloClient, ApolloProvider } from '@apollo/react-hooks'
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: 'App.js line 15 catch'
+})
+
 
 function App() {
   //Use these to change screenHeight for canvas with a window resize event listener
@@ -15,12 +22,14 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   
   return (
+    <ApolloProvider client={client}>
     <Router basename = '/'>
       <Nav />
       <Route exact path ={["/"]} component ={Landing}/>
       <Route exact path ={["/home"]} component ={Dashboard}/>
       <Route exact path ={["/play"]} component ={Court}/>
     </Router>
+    </ApolloProvider>
  
   )
 }

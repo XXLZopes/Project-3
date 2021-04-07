@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState} from 'react';
-import {SAVE_STATES} from '../../utils/mutations';
-
+import { useMutation } from '@apollo/react-hooks'
+import {SAVE_STATS} from '../../utils/mutations';
 let pinnedLocationCount = 0;
 let courtLineColor = 'teal';
 let paintColor = 'lime';
@@ -12,9 +12,12 @@ let playerInnerColor = 'white';
 
 
 function Court() {
+
+    // const [addStat, setAddStat] = useState([]);
+    // const [StatInput, setStatInput] = useState('');
+    const [addStats] = useMutation(SAVE_STATS);
     let canvasWidth = window.innerWidth <= 500 ? window.innerWidth : 500;
     const canvasRef = useRef(null);
-
     //get mouse position custom hook
     const useMousePosition = () => {
         //useState hook to set the mousePosition
@@ -34,20 +37,44 @@ function Court() {
 
     let { xPos, yPos } = useMousePosition();
 
+    const statsToSave = {
+        makes: 10,
+        misses: 10,
+        points: '10',
+        shotType: 'layup',           
+        x: 100,
+        y: 100,
+        courtLocation: canvasWidth
+    };
+    
+    const handleStatsInput = async (statsToSave) => {
+        let stats = {...statsToSave}
+        console.log(stats)
+        try {
+            const response = await addStats(stats);
+            if (!response.ok) {
+                throw new Error('Something went wrong!')
+            } 
+            // setAddStat(stats)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     //Prop drill width and height so that it can be updated on screen resize
     useEffect(() => {
         //STILL NEED TO DO: Push pin data to array and array to database with fetch request
         //Initiate Canvas
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
-
         ctx.fillStyle = playerInnerColor;
-
         ctx.beginPath()
         xPos && yPos ? ctx.arc(xPos, yPos, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
-        ctx.fill();
-
+        ctx.fill(); 
         console.log('x: ',xPos,'y: ',yPos);
+
+        handleStatsInput(statsToSave);
+
     }, [pinnedLocationCount]);
 
     //Court Lines Start
@@ -244,7 +271,6 @@ function Court() {
         width={canvasWidth} 
         height={window.innerHeight-85}
         onClick={() => {
-            //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++
         }
     }
