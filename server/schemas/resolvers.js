@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, PlayerStats } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -14,8 +14,17 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
-    },
+      stats: async (parent, args, context) => {
+        if (context.user) {
+          const userData = await User.findOne({ _id: context.user._id })
+            .select('-__v -password')
   
+          return userData.savedStats;
+        }
+  
+        throw new AuthenticationError('Not logged in');
+      },
+    },
     Mutation: {
       addUser: async (parent, args) => {
         const user = await User.create(args);
@@ -40,15 +49,15 @@ const resolvers = {
         return { token, user };
       },
       addStats: async (parent, args, context) => {
+
         if (context.user) {
-          const updatedUser = await User.create({ ...args, username: context.user.username });
-  
-          await User.findByIdAndUpdate(
+          const updatedUser = await User.findOneAndUpdate(
+            // { ...args, username: context.user.username },
             { _id: context.user._id },
-            { $push: { savedStats: PlayerStats._id } },
+            { $addToSet: { savedStats: {...args.input, location: args.input.courtLocation} } },
             { new: true, runValidators: true }
           );
-  
+            console.log(args, updatedUser);
           return updatedUser;
         }
   
