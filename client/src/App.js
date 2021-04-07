@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import './App.css';
 import Court from './components/Court'
 import Landing from './components/Landing'
+import Nav from '../src/components/Nav/index'
 
 function App() {
   //Use these to change screenHeight for canvas with a window resize event listener
@@ -10,7 +11,8 @@ function App() {
   
   return (
     <div className="background">
-      <Court></Court>
+      <Nav />
+      {/* <Court></Court> */}
       {/* <Landing></Landing> */}
 
     </div>
