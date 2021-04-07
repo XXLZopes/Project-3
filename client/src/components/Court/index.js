@@ -21,7 +21,7 @@ function Court() {
         const [mousePosition, setMousePosition] = useState({ xPos: null, yPos: null});
         //event that changes the mousePosition to current mouse position when called
         const updateMousePosition = e => {
-            setMousePosition({ xPos: e.clientX, yPos: e.clientY });
+            setMousePosition({ xPos: e.clientX, yPos: e.clientY-88 });
         };
         useEffect(() => {
             window.addEventListener('click', updateMousePosition);
@@ -112,8 +112,6 @@ function Court() {
              
                     let rx = center+r
                     y= .02655*Math.sqrt(r*r)
-                    console.log('x: ',rx)
-                    console.log('y: ', y+distanceFromHalf)
 
                     ctx.beginPath()
                     ctx.moveTo(rx, 0);
@@ -155,11 +153,6 @@ function Court() {
                     let x = center+r
                     let xOne = x
                     y= .02655*Math.sqrt(r*r)*2
-                    console.log('x: ',x)
-                    console.log('y: ', y)
-
-                 
-
                    
                     //left
                     x = center-r
@@ -261,7 +254,7 @@ function Court() {
         <canvas 
         ref={canvasRef} 
         width={canvasWidth} 
-        height={window.innerHeight-canvasWidth/5}
+        height={window.innerHeight-88}
         onClick={() => {
             //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++

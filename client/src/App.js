@@ -16,6 +16,7 @@ function App() {
   
   return (
     <Router basename = '/'>
+      <Nav />
       <Route exact path ={["/"]} component ={Landing}/>
       <Route exact path ={["/home"]} component ={Dashboard}/>
       <Route exact path ={["/play"]} component ={Court}/>
