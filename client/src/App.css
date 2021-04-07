@@ -15,10 +15,6 @@ canvas {
   background-color: rgb(179, 93, 13);
 }
 
-.modal-trigger{
- display: flex;
- justify-content: end;
-}
 
 .modal-footer a{
   color: rgb(70, 255, 79);
