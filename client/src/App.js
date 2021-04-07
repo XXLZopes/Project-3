@@ -1,16 +1,20 @@
-import React,{useState} from 'react';
+import React from 'react';
 import './App.css';
 import Court from './components/Court'
-import Landing from './components/Landing'
+// import Dropdown from './components/Dropdown';
+// import Landing from './components/Landing'
+import Nav from './components/Nav';
 
 function App() {
-  //Use these to change screenHeight for canvas with a window resize event listener
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+//   //Use these to change screenHeight for canvas with a window resize event listener
+//   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+//   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   
   return (
     <div className="background">
-      <Court></Court>
+      <Nav></Nav>
+      {/* <Dropdown />
+      <Court></Court> */}
       {/* <Landing></Landing> */}
 
     </div>
@@ -20,6 +24,7 @@ function App() {
 
   // </Router>
   )
-}
+};
+
 
 export default App;
