@@ -22,6 +22,9 @@ function Landing() {
             <div id="loginModal" className="modal">
                 <h1>login in below</h1>
             </div>
+            <footer className="footer">
+                <h6>made with ❥ by the MYLITICS team</h6>
+            </footer>
         </section>
     );
 }

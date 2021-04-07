@@ -18,3 +18,20 @@ export const GET_ME = gql`
         }
     }
 `;
+
+export const GET_STATS = gql`
+    query {
+        stats {
+            _id: ID
+            makes: Int
+            misses: Int
+            points: String
+            shotType: String
+            x: Int
+            y: Int
+            courtLocation: Int
+            createdAt: Int
+            updatedAt: Int
+        }
+    }
+`;
