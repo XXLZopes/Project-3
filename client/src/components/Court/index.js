@@ -21,7 +21,7 @@ function Court() {
         const [mousePosition, setMousePosition] = useState({ xPos: null, yPos: null});
         //event that changes the mousePosition to current mouse position when called
         const updateMousePosition = e => {
-            setMousePosition({ xPos: e.clientX, yPos: e.clientY-88 });
+            setMousePosition({ xPos: e.clientX, yPos: e.clientY-85 });
         };
         useEffect(() => {
             window.addEventListener('click', updateMousePosition);
@@ -102,7 +102,6 @@ function Court() {
                     for(let x=0; x<=width/2; x+=.5) {
                       //Draw half circle
                     ctx.beginPath()
-                    console.log(distanceBetweenLines)
                     let y= .9*Math.sqrt((r*r)-x*x)+distanceFromHalf
                     ctx.arc(x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
                     ctx.arc(-x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
@@ -222,17 +221,6 @@ function Court() {
                     ctx.lineTo(x, height);
                     ctx.stroke();
                     
-
-                    // for(let x=0; x<=width/2; x+=.5) {
-                    //     //Draw half circle
-                    //        ctx.fillStyle = courtLineColor;
-                    //        ctx.beginPath()
-                    //        y= -Math.sqrt((r*r)-x*x)+height*.93
-                    //        ctx.arc(x+center, y+5, courtLinesWidth/2.2, 0, 2*Math.PI);
-                    //        ctx.arc(-x+center, y+5, courtLinesWidth/2.2, 0, 2*Math.PI);
-                    //        ctx.fill();
-                       
-                    //        }
                     ctx.setLineDash([5, 15]);
                     ctx.beginPath();
                     ctx.arc(center, height-9, r, 0, Math.PI, -1);
@@ -254,7 +242,7 @@ function Court() {
         <canvas 
         ref={canvasRef} 
         width={canvasWidth} 
-        height={window.innerHeight-88}
+        height={window.innerHeight-85}
         onClick={() => {
             //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++
