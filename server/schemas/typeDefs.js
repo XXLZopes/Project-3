@@ -2,15 +2,27 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-      _id: ID
-      username: String
-      email: String
-      password: String
-      playerStats: [PlayerStats]
+    _id: ID
+    username: String
+    email: String
+    password: String
+    createdAt: Int
+    updatedAt: Int
+    savedStats: [PlayerStats]
+  }
+
+  input StatInput {
+    makes: Int
+    misses: Int
+    points: Int
+    shotType: String
+    x: Int
+    y: Int
+    courtLocation: Int
   }
 
   type PlayerStats {
-    statsId: ID
+    _id: ID
     makes: Int
     misses: Int
     points: String
@@ -18,6 +30,8 @@ const typeDefs = gql`
     x: Int
     y: Int
     courtLocation: Int
+    createdAt: Int
+    updatedAt: Int
   }
 
   type Preferences {
@@ -34,17 +48,6 @@ const typeDefs = gql`
     user: User
   }
 
-  input StatInput {
-    statsId: ID
-    makes: Int
-    misses: Int
-    points: Int
-    shotType: String
-    x: Int
-    y: Int
-    courtLocation: Int
-  }
-
   type Query {
     me: User
     stats: [PlayerStats]
@@ -53,9 +56,9 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, createdAt: Int, updatedAt: Int): Auth
     addStats(input: StatInput!): User
-    removeRecord(statsId: ID!): User
+    removeRecord(_id: ID!): PlayerStats
   }
 `;
 

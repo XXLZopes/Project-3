@@ -22,6 +22,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    createdAt: Number,
+    updatedAt: Number,
     // set savedStats to be an array of data that adheres to the statsSchema
     savedStats: [statsSchema],
     // savedPreferences: [preferencesSchema]
@@ -30,9 +32,13 @@ const userSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-    },
+    }
+  },
+  {
+     // Make Mongoose use Unix time
+    timestamps: {currentTime: () => Math.floor(Date.now() / 1000) } 
   }
-);
+)
 
 // hash user password
 userSchema.pre('save', async function (next) {
