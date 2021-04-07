@@ -10,7 +10,8 @@ function App() {
   
   return (
     <div className="background">
-      <Court></Court>
+      <Nav />
+      {/* <Court></Court> */}
       {/* <Landing></Landing> */}
 
     </div>
