@@ -7,11 +7,7 @@ function Landing() {
     
     return (
         <section>
-             <Modal/>
-            
-            <header>
-                <img className="img" src="./assets/welcome.gif" width="70%" alt='' />
-            </header>
+             {/* <Modal/> */}
            
             <LoginModal />
             

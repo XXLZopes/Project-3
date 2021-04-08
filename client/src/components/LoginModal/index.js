@@ -66,6 +66,7 @@ class LoginModal extends React.Component {
         </button>
  
         <ReactModalLogin
+        style={}
           visible={this.state.showModal}
           onCloseModal={this.closeModal.bind(this)}
           loading={this.state.loading}
@@ -83,7 +84,7 @@ class LoginModal extends React.Component {
           finishLoading={this.finishLoading.bind(this)}
        
         />
-      </div>
+      Yo Aidan</div>
     );
   }
 };
