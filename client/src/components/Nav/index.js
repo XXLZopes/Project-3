@@ -5,8 +5,6 @@ import "materialize-css/dist/css/materialize.min.css";
 import { GET_ME } from '../../utils/queries';
 
 class Modal extends Component {
-
-
   componentDidMount() {
     const options = {
       onOpenStart: () => {

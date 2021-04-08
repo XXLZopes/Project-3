@@ -10,15 +10,7 @@ const statsSchema = new Schema({
         type: Number,
         required: true,
       },
-      points: {
-        type: Number,
-        required: true,
-      },
       shotType: {
-        type: String,
-        required: true,
-      },
-      location: {
         type: String,
         required: true,
       },
