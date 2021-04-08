@@ -55,11 +55,22 @@ class Modal extends Component {
             <p>This is Best Basketball App ever .  yea Period I said it.  If you dont believe us we will send Nick over to deliver an attitude adjustment.</p>
           </div>
           <div className="modal-footer background-color: black" >
-            <a className="modal-close waves-effect waves-black btn-flat">
-              End Session
+            <a 
+            onClick={() => {
+              window.location = window.location = '/#/login/';
+          }
+      }
+            className="modal-close waves-effect waves-black btn-flat">
+              Login
             </a>
-            <a className="modal-close waves-effect waves-purple btn-flat">
-              Start Session
+            <a 
+            onClick={() => {
+              window.location = window.location = '/#/signup/';
+          }
+      }
+            className="modal-close waves-effect waves-purple btn-flat">
+              Sign Up
+              
             </a>
           </div>
         </div>

@@ -8,7 +8,7 @@ function Dashboard() {
             <header className="header">   
                 <br/>
             </header>  
-            <div>
+            <div className="dash-div">
                 <h2>last practice:</h2>
                 <br/>
                 insert graph or some shit here idk
