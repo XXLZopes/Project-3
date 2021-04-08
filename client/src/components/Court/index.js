@@ -46,8 +46,6 @@ function Court() {
     
     }, [data])
 
-
-    
     //get mouse position custom hook
     const useMousePosition = () => {
         //useState hook to set the mousePosition
