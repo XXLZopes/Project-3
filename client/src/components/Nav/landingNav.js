@@ -29,7 +29,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <div> 
+    <div> 
       <div className="bball">
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
@@ -37,8 +37,7 @@ class Modal extends Component {
           <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/>
         </a>
         </div>
-      
-
+    
         <div
           ref={Modal => {
             this.Modal = Modal;
@@ -59,7 +58,7 @@ class Modal extends Component {
             </a>
           </div>
         </div>
-      </div>
+    </div>
     );
   }
 }

@@ -30,6 +30,7 @@ function Court() {
     useEffect(() => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
+        console.log(loading)
         console.log(data)
         if (data) {
             let coordinates = data.me.savedStats
@@ -71,7 +72,6 @@ function Court() {
     
     let { xPos, yPos } = useMousePosition();
     const [addStats] = useMutation(SAVE_STATS);
-
 
     async function newPin(x, y) {
         try {

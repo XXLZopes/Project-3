@@ -9,7 +9,6 @@ export const GET_ME = gql`
             savedStats {
                 makes
                 misses
-                points
                 shotType
                 x
                 y

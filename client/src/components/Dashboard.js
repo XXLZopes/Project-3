@@ -5,10 +5,8 @@ import Modal from './Nav/index';
 function Dashboard() {
     return (
         <section>
-            <Modal/>
             <header className="header">   
                 <br/>
-                <h1>USERNAME</h1>
             </header>  
             <div>
                 <h2>last practice:</h2>
