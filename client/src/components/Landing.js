@@ -3,24 +3,19 @@ import LoginModal from './LoginModal';
 import Modal from '../components/Nav/landingNav'
 
 function Landing() {
+
+    
     return (
         <section>
-            <Modal/>
+             <Modal/>
+            
             <header>
                 <img className="img" src="./assets/welcome.gif" width="70%" alt='' />
             </header>
-            <br />
-            <div>
-                <button onClick={Login} className="button img">
-                    <img src="./assets/login.png" width="40%" alt='' />
-                </button>
-            </div>
-            <br />
-            <div>
-                <button onClick={SignUp} className="button img">
-                    <img className="img" src="./assets/signup.png" width="40%" alt='' />
-                </button>
-            </div>
+           
+            <LoginModal />
+            
+           
             <div id="loginModal" className="modal">
                 <h1>login in below</h1>
             </div>
