@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginModal from './LoginModal';
 import Modal from '../components/Nav/landingNav'
 
 function Landing() {
@@ -7,9 +6,8 @@ function Landing() {
     
     return (
         <section>
-             {/* <Modal/> */}
-           
-            <LoginModal />
+             <Modal/>
+        
             
            
             <div id="loginModal" className="modal">
@@ -24,7 +22,7 @@ function Landing() {
 
 function Login() {
     console.log('login')
-    return LoginModal;
+    // return LoginModal;
 }
 
 function SignUp() {

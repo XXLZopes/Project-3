@@ -14,7 +14,6 @@ const typeDefs = gql`
   input StatInput {
     makes: Int
     misses: Int
-    points: Int
     shotType: String
     x: Int
     y: Int
@@ -25,7 +24,6 @@ const typeDefs = gql`
     _id: ID
     makes: Int
     misses: Int
-    points: String
     shotType: String
     x: Int
     y: Int

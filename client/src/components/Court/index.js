@@ -11,6 +11,7 @@ let paintColor = 'lime';
 let playerInnerColor = 'white';
 let token = Auth.getToken();
 let user = Auth.getProfile();
+console.log(user)
 // console.log(token);
 // console.log(user);
 //let token = the token stored in local storage.
@@ -29,10 +30,12 @@ function Court() {
     useEffect(() => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
+        console.log(loading)
+        console.log(data)
         if (data) {
             let coordinates = data.me.savedStats
             // let 
-            console.log(coordinates)
+            console.log(data)
             // data
             for (let i = 0; i<coordinates.length; i++) {
                 let x = coordinates[i].x
@@ -46,6 +49,8 @@ function Court() {
     
     }, [data])
 
+
+    
     //get mouse position custom hook
     const useMousePosition = () => {
         //useState hook to set the mousePosition
@@ -68,10 +73,9 @@ function Court() {
     let { xPos, yPos } = useMousePosition();
     const [addStats] = useMutation(SAVE_STATS);
 
-
     async function newPin(x, y) {
         try {
-            const response = await addStats({variables: { makes: 20, misses: 10, points: 20,shotType: "layup", x: 100, y: 200, currentLocation: 100}});
+            const response = await addStats({variables: { makes: 20, misses: 10,shotType: "layup", x: 100, y: 200, currentLocation: 100}});
             console.log(response)
 
         } catch (err) {
@@ -94,7 +98,7 @@ function Court() {
         xPos && yPos ? ctx.arc(xPos, yPos, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
         ctx.fill();
      
-        newPin(xPos, yPos);
+        // newPin(xPos, yPos);
         console.log('x: ',xPos,'y: ',yPos);
     }, [pinnedLocationCount]);
 

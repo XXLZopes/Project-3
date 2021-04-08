@@ -31,7 +31,6 @@ export const SAVE_STATS = gql`
       _id: ID
       makes: Int
       misses: Int
-      points: Int
       shotType: String
       x: Int
       y: Int
