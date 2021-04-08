@@ -1,25 +1,33 @@
 import React from 'react';
+import LoginModal from './LoginModal';
+import Modal from '../components/Nav/landingNav'
 
 function Landing() {
+
+    
     return (
         <section>
-            <header>
-                <img class="img" src="./assets/welcome.gif" width="70%" alt='' />
-            </header>
-            <br/>
-            <div>
-                <button class="button img">
-                    <img src="./assets/login.png" width="20%" alt='' />
-                </button>
+             {/* <Modal/> */}
+           
+            <LoginModal />
+            
+           
+            <div id="loginModal" className="modal">
+                <h1>login in below</h1>
             </div>
-            <br/>
-            <div>
-                <button class="button img">
-                    <img class="img" src="./assets/signup.png" width="20%" alt='' />
-                </button>
-            </div>
+            <footer className="footer">
+                <h6>made with ❥ by the MYLITICS team</h6>
+            </footer>
         </section>
     );
 }
 
+function Login() {
+    console.log('login')
+    return LoginModal;
+}
+
+function SignUp() {
+    console.log('sign up')
+}
 export default Landing;
