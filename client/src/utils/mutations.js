@@ -26,12 +26,12 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_STATS = gql`
-  mutation addStats($StatInput: String!) {
+  mutation addStats($StatInput: String) {
     addStats(StatInput: $StatInput) {
       _id: ID
       makes: Int
       misses: Int
-      points: String
+      points: Int
       shotType: String
       x: Int
       y: Int

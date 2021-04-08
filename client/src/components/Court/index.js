@@ -1,20 +1,53 @@
 import React, {useRef, useEffect, useState} from 'react';
-import {SAVE_STATES} from '../../utils/mutations';
+import {useMutation, useQuery} from '@apollo/react-hooks';
+import { GET_ME } from '../../utils/queries';
+import { SAVE_STATS } from '../../utils/mutations';
+import  Auth  from '../../utils/Auth';
+
 
 let pinnedLocationCount = 0;
 let courtLineColor = 'teal';
 let paintColor = 'lime';
 let playerInnerColor = 'white';
+let token = Auth.getToken();
+let user = Auth.getProfile();
+// console.log(token);
+// console.log(user);
+//let token = the token stored in local storage.
 
 // let courtLineColor = 'red';
 // let paintColor = 'white';
 // let playerInnerColor = 'yellow';
 
-
 function Court() {
+
+    
+    const {loading, err, data} = useQuery(GET_ME);
     let canvasWidth = window.innerWidth <= 500 ? window.innerWidth : 500;
     const canvasRef = useRef(null);
+    
+    useEffect(() => {
+        const canvas = canvasRef.current
+        const ctx = canvas.getContext('2d')
+        if (data) {
+            let coordinates = data.me.savedStats
+            // let 
+            console.log(coordinates)
+            // data
+            for (let i = 0; i<coordinates.length; i++) {
+                let x = coordinates[i].x
+                let y = coordinates[i].y
+                ctx.beginPath();
+                ctx.arc(x, y, 10, 0,2*Math.PI)
+                ctx.fillStyle = playerInnerColor;
+                ctx.fill();
+            }
+        }
+    
+    }, [data])
 
+
+    
     //get mouse position custom hook
     const useMousePosition = () => {
         //useState hook to set the mousePosition
@@ -32,9 +65,25 @@ function Court() {
         return mousePosition;
     };
 
-    let { xPos, yPos } = useMousePosition();
 
-    //Prop drill width and height so that it can be updated on screen resize
+    
+    let { xPos, yPos } = useMousePosition();
+    const [addStats] = useMutation(SAVE_STATS);
+
+
+    async function newPin(x, y) {
+        try {
+            const response = await addStats({variables: { makes: 20, misses: 10, points: 20,shotType: "layup", x: 100, y: 200, currentLocation: 100}});
+            console.log(response)
+
+        } catch (err) {
+            console.log(err);
+            
+        }
+
+    }
+
+    //Add point
     useEffect(() => {
         //STILL NEED TO DO: Push pin data to array and array to database with fetch request
         //Initiate Canvas
@@ -46,7 +95,8 @@ function Court() {
         ctx.beginPath()
         xPos && yPos ? ctx.arc(xPos, yPos, 10, 0, 2*Math.PI) : ctx.arc(xPos, yPos, 0, 0, 2*Math.PI)
         ctx.fill();
-
+     
+        newPin(xPos, yPos);
         console.log('x: ',xPos,'y: ',yPos);
     }, [pinnedLocationCount]);
 
@@ -102,7 +152,6 @@ function Court() {
                     for(let x=0; x<=width/2; x+=.5) {
                       //Draw half circle
                     ctx.beginPath()
-                    console.log(distanceBetweenLines)
                     let y= .9*Math.sqrt((r*r)-x*x)+distanceFromHalf
                     ctx.arc(x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
                     ctx.arc(-x+center, y-60, courtLinesWidth/2.2, 0, 2*Math.PI);
@@ -250,18 +299,18 @@ function Court() {
             } drawOutOfBounds();
     }, []) //Add use effect when screen size variables change [screen size variable]
     
-    return(
+    return(<>
+        {loading ? <div>loading</div> : ''}
         <canvas 
         ref={canvasRef} 
         width={canvasWidth} 
         height={window.innerHeight-88}
         onClick={() => {
-            //change pinnedLocationCount to be an array of objects that gets set to ...pinnedLocation + {new object info}
             pinnedLocationCount++
         }
     }
         ></canvas>
-    )
+    </>)
 } //Court Lines End
 
 export default Court;

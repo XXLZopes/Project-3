@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import {useMutation, useQuery} from '@apollo/react-hooks';
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import { GET_ME } from '../../utils/queries';
 
 class Modal extends Component {
+
+
   componentDidMount() {
     const options = {
       onOpenStart: () => {
@@ -28,6 +32,7 @@ class Modal extends Component {
   }
 
   render() {
+
     return (
       <div> 
       <div className="bball">
@@ -38,7 +43,7 @@ class Modal extends Component {
           <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/>
         </a>
         </div>
-      
+    
 
         <div
           ref={Modal => {
