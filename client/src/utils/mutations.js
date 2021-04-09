@@ -26,9 +26,9 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_STATS = gql`
-  mutation addStats($StatInput: String) {
-    addStats(StatInput: $StatInput) {
-      _id: ID
+  mutation addStats($makes: Int, $misses: Int, $shotType: String, $x: Int, $y: Int, $courtLocation: Int) {
+    addStats(makes: $makes, misses: $misses, shotType: $shotType, x: $x, y: $y, courtLocation: $courtLocation) {
+      statsId: ID
       makes: Int
       misses: Int
       shotType: String
@@ -40,9 +40,9 @@ export const SAVE_STATS = gql`
 `;
 
 export const REMOVE_RECORD = gql`
-  mutation removeRecord($_Id: ID!) {
-    removeRecord(_Id: $_Id) {
-      _id: ID
+  mutation removeRecord($statsId: ID!) {
+    removeRecord(statsId: $statsId) {
+      statsId: ID
       makes: Int
       misses: Int
       points: String

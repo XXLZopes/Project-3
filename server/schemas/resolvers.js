@@ -54,7 +54,7 @@ const resolvers = {
           const updatedUser = await User.findOneAndUpdate(
             // { ...args, username: context.user.username },
             { _id: context.user._id },
-            { $addToSet: { savedStats: {...args.input, location: args.input.courtLocation} } },
+            { $addToSet: { savedStats: {...args, location: args.courtLocation} } },
             { new: true, runValidators: true }
           );
             console.log(args, updatedUser);
