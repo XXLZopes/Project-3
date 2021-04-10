@@ -4,27 +4,21 @@ const { Schema } = require('mongoose');
 const statsSchema = new Schema({
       makes: {
         type: Number,
-        required: true,
       },
       misses: {
         type: Number,
-        required: true,
       },
       shotType: {
         type: String,
-        required: true,
       },
       x: {
         type: Number,
-        required: true,
       },
       y: {
         type: Number,
-        required: true,
       },
       courtLocation: {
         type: Number,
-        required: true,
       },
       createdAt: Number,
       updatedAt: Number,

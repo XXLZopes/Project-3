@@ -21,7 +21,7 @@ const typeDefs = gql`
   }
 
   type PlayerStats {
-    _id: ID
+    statsId: ID
     makes: Int
     misses: Int
     shotType: String
@@ -55,8 +55,9 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, createdAt: Int, updatedAt: Int): Auth
-    addStats(input: StatInput!): User
-    removeRecord(_id: ID!): PlayerStats
+    addStats(makes: Int, misses: Int, shotType: String, x: Int, y: Int, courtLocation: Int): User
+    statsInput(input: StatInput): User
+    removeRecord(statsId: ID!): PlayerStats
   }
 `;
 

@@ -7,6 +7,7 @@ export const GET_ME = gql`
             username
             email
             savedStats {
+                statsId
                 makes
                 misses
                 shotType
@@ -21,7 +22,7 @@ export const GET_ME = gql`
 export const GET_STATS = gql`
     query {
         stats {
-            _id: ID
+            statsId: ID
             makes: Int
             misses: Int
             points: String
