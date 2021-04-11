@@ -9,7 +9,6 @@ function Login() {
     // let [loginUser] = useMutation(LOGIN_USER)
 
     const login = async (e) => {
-        console.log(userFormData)
         e.preventDefault();
         e.stopPropagation();
 
@@ -18,6 +17,7 @@ function Login() {
             return
         }
         try {
+            window.location = '/play/';
             // const response = await loginUser({variables: userFormData});
             const response = 'delete this line'
 
@@ -29,7 +29,7 @@ function Login() {
             console.log(user);
             console.log('Successfully Logged In')
             Auth.login(token);
-            window.location = window.location = '/play/';
+            
         } catch (err) {
             console.log(err);
         }

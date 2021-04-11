@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {useMutation} from '@apollo/client/react/hooks';
-import {ADD_USER} from '../../utils/mutations'
+import {ADD_USER} from '../../utils/mutations';
+import {LOGIN_USER} from '../../utils/mutations';
 
 
 
 function SignUpPage() {
     // const [addUser] = useMutation(ADD_USER);
+    // const [loginUser] = useMutation(LOGIN_USER);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +26,10 @@ function SignUpPage() {
       
         try {
             // const response = await addUser({variables: {username: username, email: email, password: password}});
-            window.location = '/login/';
+            // if (response.ok) {
+            //  loginUser({variables: {email: email, password: password}})
+            // }
+            window.location = '/play/';
             console.log(`Welcome ${username}!`)
         } catch (err) {
             console.log(err);
