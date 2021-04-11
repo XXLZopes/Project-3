@@ -3,6 +3,7 @@ import {useMutation, useQuery} from '@apollo/client';
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import { GET_ME } from '../../utils/queries';
+// import {} from '../../../public/assets/MyLitics.gif'
 
 class Modal extends Component {
   componentDidMount() {
@@ -34,7 +35,7 @@ class Modal extends Component {
     return (
       <div> 
       <div className="bball">
-      <img className="img" src="./assets/MYLITICS.gif" width="70%" alt='' />
+      <img className="img" src="../../../public/assets/MyLitics.gif" width="70%" alt='' />
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}
