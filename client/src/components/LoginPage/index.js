@@ -6,7 +6,7 @@ import Auth from '../../utils/Auth'
 
 function Login() {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-    const [loginUser] = useMutation(LOGIN_USER)
+    // let [loginUser] = useMutation(LOGIN_USER)
 
     const login = async (e) => {
         console.log(userFormData)
@@ -18,8 +18,8 @@ function Login() {
             return
         }
         try {
-            const response = await loginUser({variables: userFormData});
-            // const response = 'delete this line'
+            // const response = await loginUser({variables: userFormData});
+            const response = 'delete this line'
 
             console.log(response);
             if (response.errors && response.data.login) {

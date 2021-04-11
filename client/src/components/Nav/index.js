@@ -32,7 +32,7 @@ class Modal extends Component {
     return (
       <div> 
       <div className="bball">
-      <img className="img" src="../assets/MyLitics.gif" width="70%" alt='' />
+      <img className="img" src="../assets/MyLitics.gif" height="88" alt='' />
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}
