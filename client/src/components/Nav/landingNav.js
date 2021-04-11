@@ -34,7 +34,7 @@ class Modal extends Component {
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}
-          <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/>
+          {/* <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/> */}
         </a>
         </div>
     

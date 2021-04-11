@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, setContext } from '@apollo/client';
 
 import './App.css';
 import Court from './components/Court'
@@ -23,7 +23,7 @@ import Auth from './utils/Auth'
 // })
 
 // const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
+//   url: authLink.concat(httpLink),
 //   cache: new InMemoryCache()
 // })
 

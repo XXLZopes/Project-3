@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import {useMutation} from '@apollo/client';
-import Auth from '../../utils/Auth';
+import React, { useState  } from 'react';
+import {useMutation} from '@apollo/client/react/hooks';
 import {LOGIN_USER} from '../../utils/mutations'
+import Auth from '../../utils/Auth'
+
 
 function Login() {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-    // const [loginUser, { data }] = useMutation(LOGIN_USER);
+    const [loginUser] = useMutation(LOGIN_USER)
 
-    // async function login(e) {
     const login = async (e) => {
+        console.log(userFormData)
         e.preventDefault();
         e.stopPropagation();
 
@@ -16,30 +17,33 @@ function Login() {
             console.log('missing email or password')
             return
         }
-        // try {
-        //     const response = await loginUser({variables: userFormData});
-        //     console.log(response);
-        //     if (response.errors && response.data.login) {
-        //         throw new Error('something went wrong!');
-        //     }
-        //     const { token, user } = response.data.login;
-        //     // console.log(user);
-        //     console.log('Successfully Logged In')
-        //     Auth.login(token);
-        //     window.location = window.location = '/#/play/';
-        // } catch (err) {
-        //     console.log(err);
-        // }
+        try {
+            const response = await loginUser({variables: userFormData});
+            // const response = 'delete this line'
+
+            console.log(response);
+            if (response.errors && response.data.login) {
+                throw new Error('something went wrong!');
+            }
+            const { token, user } = response.data.login;
+            console.log(user);
+            console.log('Successfully Logged In')
+            Auth.login(token);
+            window.location = window.location = '/play/';
+        } catch (err) {
+            console.log(err);
+        }
 
     }
+
 
     return(
         <section>
             <form onSubmit={login} className="login">
                 Email: <input type="text" id='emailInput' name='emailInput'
-                value={userFormData.email} onChange={(e) => login(e.target.value)}/>
+                value={userFormData.email} onChange={(e) => setUserFormData({ ...userFormData, email: e.target.value})}/>
                 Password: <input type="password" id='pwInput' name='pwInput'
-                value={userFormData.password} onChange={(e) => login(e.target.value)}/>
+                value={userFormData.password} onChange={(e) => setUserFormData({...userFormData, password: e.target.value})}/>
                 <button type="submit">Login</button>
             </form>
         </section>

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import {useMutation, useQuery} from '@apollo/client';
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-import { GET_ME } from '../../utils/queries';
 
 class Modal extends Component {
   componentDidMount() {
@@ -38,7 +36,7 @@ class Modal extends Component {
         <a>
           {/* // className="waves-effect waves-light btn modal-trigger"
           // data-target="modal1" */}
-          <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={window.innerHeight-(window.innerHeight - window.innerWidth / 6)}/>
+          <img className="modal-trigger" src="https://i.imgur.com/6r8BVdf.png"  data-target="modal1" width={88}/>
         </a>
         </div>
     
