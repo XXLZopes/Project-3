@@ -8,7 +8,8 @@ function Login() {
     const [password, setPassword] = useState('');
     const [loginUser] = useMutation(LOGIN_USER);
 
-    async function login(e) {
+    // async function login(e) {
+    const login = async (e) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -26,6 +27,7 @@ function Login() {
             // console.log(user);
             console.log('Successfully Logged In')
             Auth.login(token);
+            window.location = window.location = '/#/play/';
         } catch (err) {
             console.log(err);
         }

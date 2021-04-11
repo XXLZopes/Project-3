@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 
 import './App.css';
-// import Court from './components/Court'
+import Court from './components/Court'
 import Landing from './components/Landing'
 import Nav from '../src/components/Nav/index'
 import Dashboard from './components/Dashboard'
@@ -50,10 +50,10 @@ function App() {
         <Nav />
         <Switch>
         <Route exact path ={["/signup"]} component ={SignUpPage} />
-        <Route exact path ={["/play"]} component ={Landing} />
+        <Route exact path ={["/"]} component ={Landing} />
         <Route exact path ={["/login"]} component ={LoginPage}/>
         <Route exact path ={["/home"]} component ={Dashboard}/>
-
+        <Route exact path ={['/play']} component ={Court}/>
         </Switch>
         </div>
     </Router>

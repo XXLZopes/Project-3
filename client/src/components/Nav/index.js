@@ -57,7 +57,7 @@ class Modal extends Component {
           <div className="modal-footer background-color: black" >
             <a 
             onClick={() => {
-              window.location = window.location = '/#/login/';
+              window.location = window.location = '/login/';
           }
       }
             className="modal-close waves-effect waves-black btn-flat">
@@ -65,7 +65,7 @@ class Modal extends Component {
             </a>
             <a 
             onClick={() => {
-              window.location = window.location = '/#/signup/';
+              window.location = window.location = '/signup/';
           }
       }
             className="modal-close waves-effect waves-purple btn-flat">
