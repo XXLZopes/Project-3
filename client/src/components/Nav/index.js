@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {useMutation, useQuery} from '@apollo/react-hooks';
+import {useMutation, useQuery} from '@apollo/client';
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import { GET_ME } from '../../utils/queries';
