@@ -6,7 +6,7 @@ function SignUpPage() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [addUser] = useMutation(ADD_USER);
+    // const [addUser] = useMutation(ADD_USER);
 
     async function createUser(e) {
         e.preventDefault();
@@ -16,21 +16,21 @@ function SignUpPage() {
             console.log('missing email or password')
             return
         }
-        try {
-            const response = await addUser({variables: {username: username, email: email, password: password}});
-            console.log(response);
-            // console.log(user);
-            window.location = '/#/login/';
-            console.log(`Welcome ${username}!`)
-        } catch (err) {
-            console.log(err);
-        }
+        // try {
+        //     const response = await addUser({variables: {username: username, email: email, password: password}});
+        //     console.log(response);
+        //     // console.log(user);
+        //     window.location = '/#/login/';
+        //     console.log(`Welcome ${username}!`)
+        // } catch (err) {
+        //     console.log(err);
+        // }
 
     }
 
     return(
         <section>
-            <form onSubmit={createUser} className="signUp">
+            <form onSubmit={window.location = '/login/'} className="signUp">
                 Username: <input type="text" id='usernameInput' name='usernameInput'
                 value={username} onChange={(e) => setUsername(e.target.value)}/>
                 Email: <input type="text" id='emailInput' name='emailInput'
