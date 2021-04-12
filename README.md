@@ -22,6 +22,7 @@ MIT
 none
 
 ## Usage
+NOTE: Click the basketball at the top right of the screen to sight up/login.  Once logged in you will be re-directed to the main aplication.
 Built for better practice.  A better practice will lead to better play.  Offensive and defensive drills are available.
 
 ## Contributors
