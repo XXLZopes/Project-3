@@ -10,6 +10,7 @@
 *[Contributors](#contributors)<br>
 *[Installation](#installation)<br>
 *[About](#about)
+*[Challenges](#challenges)
 
 ## Description
 Mylitics is a drill based basketball application.  Sign-up, customize your dashboard and begin your drills.  Mylitics will save and organize your drills, displaying your strong spots and weak spots.
