@@ -9,7 +9,7 @@
 *[Usage](#usage)<br>
 *[Contributors](#contributors)<br>
 *[Installation](#installation)<br>
-*[About](#about)
+*[About](#about)<br>
 *[Challenges](#challenges)
 
 ## Description
